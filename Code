@@ -1,0 +1,90 @@
+using System;
+using System.Collections.Generic;
+
+namespace QuizGame
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, string> flashcards = InitializeFlashcards();
+
+            Console.WriteLine("Welcome to the Criminal Justice Quiz!");
+            Console.WriteLine("There are " + flashcards.Count + " flashcards in the set.");
+            Console.WriteLine("Press Enter to start the quiz...");
+            Console.ReadLine();
+            Console.Clear();
+
+            int score = 0;
+
+            foreach (var flashcard in flashcards)
+            {
+                Console.WriteLine("Flashcard:");
+                Console.WriteLine(flashcard.Key);
+                Console.Write("Enter your answer: ");
+                string answer = Console.ReadLine();
+                Console.WriteLine();
+
+                if (answer.ToLower() == flashcard.Value.ToLower())
+                {
+                    Console.WriteLine("Correct!");
+                    score++;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect. The correct answer is: " + flashcard.Value);
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("Quiz completed!");
+            Console.WriteLine("Your score: " + score + " out of " + flashcards.Count);
+            Console.WriteLine();
+
+            double percentage = (double)score / flashcards.Count * 100;
+
+            if (percentage >= 80)
+            {
+                Console.WriteLine("Congratulations! You passed. I think you're ready for the quiz!");
+            }
+            else
+            {
+                Console.WriteLine("Let's study some more! Your score is below 80%.");
+            }
+
+            Console.ReadLine();
+        }
+
+        static Dictionary<string, string> InitializeFlashcards()
+        {
+            Dictionary<string, string> flashcards = new Dictionary<string, string>()
+            {
+                {"Acquittal", "A verdict of not guilty."},
+                {"Bail", "Sum of money that the arrested person pays to guarantee that he or she will appear at future hearings."},
+                {"Crime", "An intentional act or omission to act, neither justified nor excused, that is in violation of criminal law and punishable by the state."},
+                {"Crime Control Model", "A perspective of criminal justice that identifies the repression of crime as the most important function of the criminal justice system."},
+                {"Criminal Justice Process", "Procedures that occur in the criminal justice system, from a citizen's initial contact with police to their potential arrest, charging, booking, prosecution, conviction, sentencing, incarceration, and receiving probation, to being paroled."},
+                {"Criminal Justice System", "A loosely organized collection of agencies (police, courts, and corrections) that operate at the local, state, and federal levels, charged with protecting the public, maintaining order, enforcing laws, identifying offenders, bringing the guilty to justice, and treating and punishing."},
+                {"Defendant", "A person against whom a charge is brought in court."},
+                {"Due Process Model", "A perspective of criminal justice that argues that the purpose of the criminal justice system is to ensure fairness under the law."},
+                {"Indict", "To accuse of wrongdoing through formal accusations."},
+                {"Initial Appearance", "A defendant's first appearance in court to be informed of the charges, advised of their rights, and to have bail determined."},
+                {"Jail", "An institution to hold pretrial detainees and people convicted of less serious crimes."},
+                {"Jurisdiction", "The territory over which a law enforcement agency has authority."},
+                {"Norms", "Behavioral expectations of a group."},
+                {"Parole", "A type of conditional release that is based on good behavior or evidence of some level of rehabilitation."},
+                {"Prison", "An institution for the confinement of people who have been convicted of serious crimes."},
+                {"Probable Cause", "A preliminary hearing scheduled by a judge to decide whether there is sufficient evidence to prove that a crime was committed and that the accused person likely committed it."},
+                {"Prosecutor", "An individual charged with carrying out a legal prosecution."},
+                {"Restorative Justice Model", "A perspective of criminal justice that maintains the goal of repairing harm that criminal offenses inflict upon victims, offenders, and communities."},
+                {"Social Justice Model", "A perspective of criminal justice that argues that crime is the result of the burdens and benefits in society not being equally distributed among its members."},
+                {"U.S. Supreme Court", "The highest appellate court in the U.S. judicial system; it reviews cases appealed from federal and state court systems that deal with constitutional issues."},
+                {"Victim Impact Statements", "Oral or written statements by the family or friends of the victim that explain the crime's impact on the victim and/or his or her family and friends."},
+                {"Actus Reus", "Guilty act"}
+            };
+
+            return flashcards;
+        }
+    }
+}
